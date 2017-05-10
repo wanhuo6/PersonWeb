@@ -2,6 +2,7 @@ package com.ahuo.servlet;
 
 import com.ahuo.bean.UserBean;
 import com.alibaba.fastjson.JSONObject;
+import com.huo.tools.HuoUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserBean userBean=new UserBean();
-        userBean.name="lin";
+        userBean.name= HuoUtils.getString("liu");
         userBean.age=12;
         userBean.height=175.0;
         String jsonObjectStr= JSONObject.toJSONString(userBean);
