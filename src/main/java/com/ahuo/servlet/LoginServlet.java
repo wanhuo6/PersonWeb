@@ -21,7 +21,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserBean userBean=new UserBean();
-        userBean.name= HuoUtils.getString("liu");
+        userBean.name= HuoUtils.getString("compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'\n" +
+                "    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.31'");
         userBean.age=12;
         userBean.height=175.0;
         String jsonObjectStr= JSONObject.toJSONString(userBean);
