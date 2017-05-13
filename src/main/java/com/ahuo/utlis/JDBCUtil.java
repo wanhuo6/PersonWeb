@@ -1,5 +1,6 @@
 package com.ahuo.utlis;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -45,7 +46,7 @@ public class JDBCUtil {
     //静态代码块，加载驱动
     static{
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

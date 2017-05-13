@@ -2,6 +2,7 @@ package com.ahuo.dao;
 
 import com.ahuo.bean.UserBean;
 import com.ahuo.utlis.JDBCUtil;
+import jdk.internal.org.objectweb.asm.Type;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,19 +33,21 @@ public class UserDao {
         PreparedStatement stat = null;
 
         try {
-            String sql = "insert into member values (null,?,?,?,?,?,?,?,?)";
+            String sql = "insert into user values (null,?,?,?,?,?,?,?,?,?,?)";
             conn = util.getConnection();        //创建连接
             stat = conn.prepareStatement(sql);  //创建预处理对象
 
             //存储数据（有几个问好，就存几个）
             stat.setString(1, user.uuid);
             stat.setString(2, user.name);
-            stat.setString(3, user.photo);
-            stat.setInt(4, user.age);
-            stat.setDouble(5, user.height);
-            stat.setDouble(6, user.weight);
+            stat.setNull(3, Type.INT);
+            stat.setString(4, user.photo);
+            stat.setNull(5, Type.DOUBLE);
+            stat.setDouble(6, Type.DOUBLE);
             stat.setString(7, user.blog);
             stat.setString(8, user.headImage);
+            stat.setString(9, user.account);
+            stat.setString(10,user.password);
 
             stat.executeUpdate();//保存
 
@@ -73,7 +76,7 @@ public class UserDao {
         ResultSet res = null;
 
         try {
-            String sql = "select * from member where username = ?";
+            String sql = "select * from user where account = ?";
             conn = util.getConnection();
             stat = conn.prepareStatement(sql);
 
@@ -93,6 +96,8 @@ public class UserDao {
                 user.weight=(res.getDouble("weight"));
                 user.blog=(res.getString("blog"));
                 user.headImage=(res.getString("headImage"));
+                user.account=(res.getString("account"));
+                user.password=(res.getString("password"));
             }
 
         } catch (Exception e) {

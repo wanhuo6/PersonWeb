@@ -9,6 +9,7 @@ public class UserBean {
     public String uuid;
     public String name;
     public String photo;
+    public Integer sex;//1男2女
     public Integer age;
     public Double height;
     public Double weight;

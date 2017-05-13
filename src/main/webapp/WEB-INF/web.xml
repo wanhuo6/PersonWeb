@@ -5,10 +5,10 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-  <context-param>
+  <!--<context-param>
     <param-name>url</param-name>
-    <param-value>jdbc:mysql://rm-uf62q4flhiq09jm89o.mysql.rds.aliyuncs.com:3306/person</param-value>
-  </context-param>
+    <param-value>jdbc:mysql://rm-uf62q4flhiq09jm89o.mysql.rds.aliyuncs.com:3306/person/framework?characterEncoding=utf8&useSSL=true;</param-value>
+  </context-param>-->
   <context-param>
     <param-name>dbUser</param-name>
     <param-value>wanhuo</param-value>

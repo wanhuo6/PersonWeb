@@ -21,10 +21,8 @@ import java.io.PrintWriter;
  */
 @WebServlet(name = "LoginServlet",urlPatterns = "/GetLogin")
 public class LoginServlet extends HttpServlet {
-
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //获取请求参数
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf8");
         String username = req.getParameter("username");
         String pass = req.getParameter("pass");
@@ -35,13 +33,15 @@ public class LoginServlet extends HttpServlet {
         //如果用户名和密码不为空，并且长度大于0就执行if语句--->判断查询到的user--->判断密码是否一致
         if(username!=null&&username.length()>0&&pass!=null&&pass.length()>0){
 
-            //要连接数据库，先从配置表中获取初始化参数传给JDBSUtil的构造函数
             ServletContext ctx = this.getServletContext();
-            String url = ctx.getInitParameter("url");
-            String dbuser = ctx.getInitParameter("dbUser");
-            String dbpass = ctx.getInitParameter("dbPass");
+           /* String url = ctx.getInitParameter("url");*/
+            String dbuser = ctx.getInitParameter("dbuser");
+            String dbpass = ctx.getInitParameter("dbpass");
+            String url="jdbc:mysql://rm-uf62q4flhiq09jm89o.mysql.rds.aliyuncs.com:3306/person";
 
-            JDBCUtil util = new JDBCUtil(url, dbuser, dbpass);
+
+            JDBCUtil util = new JDBCUtil(url, "wanhuo", "huijie21@");
+
 
             //然后将util作为参数传给操作类
             UserDao dao = new UserDao();
@@ -52,7 +52,8 @@ public class LoginServlet extends HttpServlet {
 
             if(user!=null){
                 if(user.password.equals(pass)){
-                    out.println("<h1>恭喜你！登录成功！进入了学生管理系统！</h1>");
+                    out.println("<h1>恭喜你！登录成功！</h1>");
+                    out.println("<br><a href='http://www.liuhuijie.cn'>进入首页</a>");
                 }else{
                     out.println("<h1>登录失败！密码错误！</h1>");
                     out.println("<br><a href='index.jsp'>点此登录</a>");
@@ -70,5 +71,6 @@ public class LoginServlet extends HttpServlet {
 
         out.flush();
         out.close();
+
     }
 }

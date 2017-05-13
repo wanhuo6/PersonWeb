@@ -13,7 +13,7 @@
   <body>
   <h1>阿火俱乐部</h1>
 
-  <form action="login" method="post">
+  <form action="/GetLogin" method="post">
     <table>
       <tr>
         <td>用户名：</td>
@@ -27,7 +27,7 @@
 
       <tr>
         <td><input type="submit" value="登录"> </td>
-        <td><a href="jsp/login.jsp">没有账号？点我注册</a></td>
+        <td><a href="html/register.html">没有账号？点我注册</a></td>
       </tr>
     </table>
   </form>
