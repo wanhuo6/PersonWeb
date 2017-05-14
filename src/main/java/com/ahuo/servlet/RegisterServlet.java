@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         //输入校验
-        if(account!=null&&account.length()>5&&password!=null&&password2!=null&&password.length()>5&&password.equals(password2)){
+        if(account!=null&&password!=null&&password2!=null&&password.equals(password2)){
 
             //要连接数据库，先从配置表中获取初始化参数传给JDBSUtil的构造函数
             ServletContext ctx = this.getServletContext();
@@ -56,6 +56,7 @@ public class RegisterServlet extends HttpServlet {
             //将获取的的参数存到uer中，调用操作类中的方法保存
             UserBean user = new UserBean();
             user.account=account;
+            user.name=account;
             user.password=password;
             user.photo = photo;
             user.uuid=String.valueOf(System.currentTimeMillis());
@@ -68,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
         }else{
 
             out.println("<h1>参数有误，注册失败！</h1>");
-            out.println("<br><a href='html/register.html'>重新注册</a>");
+            out.println("<br><a href='jsp/register.jsp'>重新注册</a>");
 
         }
 
