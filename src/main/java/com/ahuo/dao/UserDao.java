@@ -27,7 +27,7 @@ public class UserDao {
     }
 
     //
-    public void saveUser(UserBean user){
+    public boolean saveUser(UserBean user){
 
         Connection conn = null;
         PreparedStatement stat = null;
@@ -50,9 +50,11 @@ public class UserDao {
             stat.setString(10,user.password);
 
             stat.executeUpdate();//保存
+            return true;
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }finally{
 
             try {

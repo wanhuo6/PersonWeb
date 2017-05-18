@@ -32,7 +32,7 @@
 
       <tr>
         <td><input type="submit" value="登录"> </td>
-        <td><a href="jsp/register.jsp">没有账号？点我注册</a></td>
+        <td><a href="jsp/register.jsp">注册账号</a></td>
       </tr>
     </table>
   </form>

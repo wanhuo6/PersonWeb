@@ -56,16 +56,16 @@ public class LoginServlet extends HttpServlet {
                     out.println("<br><a href='http://www.liuhuijie.cn'>进入首页</a>");
                 }else{
                     out.println("<h1>登录失败！密码错误！</h1>");
-                    out.println("<br><a href='index.jsp'>点此登录</a>");
+                    out.println("<br><a href='/'>点此登录</a>");
                 }
             }else{
                 out.println("<h1>登录失败！用户名错误！</h1>");
-                out.println("<br><a href='index.jsp'>点此登录</a>");
+                out.println("<br><a href='/'>点此登录</a>");
             }
 
         }else{
             out.println("<h1>登录失败！用户名/密码错误！</h1>");
-            out.println("<br><a href='index.jsp'>点此登录</a>");
+            out.println("<br><a href='/'>点此登录</a>");
         }
 
 

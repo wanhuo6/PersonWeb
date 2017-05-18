@@ -62,15 +62,16 @@ public class RegisterServlet extends HttpServlet {
             user.uuid=String.valueOf(System.currentTimeMillis());
 
             // TODO: 2017-5-13 try handle 
-            dao.saveUser(user);
-
-            out.println("<h1>恭喜你！注册成功</h1>");
-            out.println("<br><a href='index.jsp'>点此登录</a>");
+            if (dao.saveUser(user)){
+                out.println("<h1>恭喜你！注册成功</h1>");
+                out.println("<br><a href='/'>点此登录</a>");
+            }else{
+                out.println("<h1>参数有误，注册失败！</h1>");
+                out.println("<br><a href='jsp/register.jsp'>重新注册</a>");
+            }
         }else{
-
             out.println("<h1>参数有误，注册失败！</h1>");
             out.println("<br><a href='jsp/register.jsp'>重新注册</a>");
-
         }
 
         out.flush();
