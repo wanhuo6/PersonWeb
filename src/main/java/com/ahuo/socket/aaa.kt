@@ -5,7 +5,7 @@ package com.ahuo.socket
  */
 object aaa {
     @JvmStatic
-    fun main(args: Array<String>) {
+    fun main(args: Array<String>){
         println("你好啊")
     }
 
@@ -14,4 +14,8 @@ object aaa {
         println(sourse)
 
     }
+
+
+
+
 }
