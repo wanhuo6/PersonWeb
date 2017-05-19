@@ -3,7 +3,7 @@ package com.ahuo.bean;
 /**
  * Created by wanhuo on 2017-5-10.
  */
-public class UserBean {
+public class UserBean extends BaseBean{
     public String account;
     public String password;
     public String uuid;

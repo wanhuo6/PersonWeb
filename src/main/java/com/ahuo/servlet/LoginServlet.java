@@ -1,5 +1,6 @@
 package com.ahuo.servlet;
 
+import com.ahuo.bean.SubmitBean;
 import com.ahuo.bean.UserBean;
 import com.ahuo.core.config.WebConfig;
 import com.ahuo.dao.UserDao;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import static com.alibaba.fastjson.serializer.SerializerFeature.WriteNullStringAsEmpty;
 
 /**
  * Created by ahuo on 17-5-10.
@@ -52,8 +55,15 @@ public class LoginServlet extends HttpServlet {
 
             if(user!=null){
                 if(user.password.equals(pass)){
-                    out.println("<h1>恭喜你！登录成功！</h1>");
-                    out.println("<br><a href='http://www.liuhuijie.cn'>进入首页</a>");
+                    SubmitBean submitBean=new SubmitBean();
+                    submitBean.code=200;
+                    submitBean.message="登录成功";
+                    submitBean.state=true;
+                    user.submit=submitBean;
+                    String json=JSONObject.toJSONString(user,WriteNullStringAsEmpty);
+                    out.print(json);
+                   // out.println("<h1>恭喜你！登录成功！</h1>");
+                    //out.println("<br><a href='http://www.liuhuijie.cn'>进入首页</a>");
                 }else{
                     out.println("<h1>登录失败！密码错误！</h1>");
                     out.println("<br><a href='/'>点此登录</a>");

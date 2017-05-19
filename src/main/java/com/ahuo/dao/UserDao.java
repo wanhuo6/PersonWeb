@@ -33,7 +33,7 @@ public class UserDao {
         PreparedStatement stat = null;
 
         try {
-            String sql = "insert into user values (null,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into user values (null,?,?,?,?,?,?,?,?,?,?,?)";
             conn = util.getConnection();        //创建连接
             stat = conn.prepareStatement(sql);  //创建预处理对象
 
@@ -48,7 +48,7 @@ public class UserDao {
             stat.setString(8, user.headImage);
             stat.setString(9, user.account);
             stat.setString(10,user.password);
-
+            stat.setNull(11, Type.INT);
             stat.executeUpdate();//保存
             return true;
 
@@ -98,6 +98,7 @@ public class UserDao {
                 user.weight=(res.getDouble("weight"));
                 user.blog=(res.getString("blog"));
                 user.headImage=(res.getString("headImage"));
+                user.sex=(res.getInt("sex"));
                 user.account=(res.getString("account"));
                 user.password=(res.getString("password"));
             }
